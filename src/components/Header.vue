@@ -71,11 +71,14 @@
 
 <script>
 // 导入Vue组合式API
-import { computed, ref, reactive, onMounted, onUnmounted } from 'vue'
+import { computed, ref, onMounted, onUnmounted } from 'vue'
 // 导入Vuex store
 import { useStore } from 'vuex'
 // 导入路由
 import { useRouter } from 'vue-router'
+
+// 导入共享的搜索数据
+import { searchData } from '../data/searchData'  
 
 // 导出组件定义
 export default{
@@ -93,20 +96,6 @@ export default{
     const showSearchResults = ref(false)
     const searchResults = ref([])
     
-    // 模拟搜索数据
-    const searchData = reactive([
-      { id: 1, title: '基因测序服务', type: '服务', route: '/services', category: 'services' },
-      { id: 2, title: '生物分析软件', type: '产品', route: '/products', category: 'products' },
-      { id: 3, title: '新药研发突破', type: '新闻', route: '/news', category: 'news' },
-      { id: 4, title: '公司发展历程', type: '关于我们', route: '/about', category: 'about' },
-      { id: 5, title: '专业团队介绍', type: '关于我们', route: '/about', category: 'about' },
-      { id: 6, title: '国际合作项目', type: '关于我们', route: '/about', category: 'about' },
-      { id: 7, title: 'AI辅助诊断系统', type: '产品', route: '/products', category: 'products' },
-      { id: 8, title: '核酸检测平台', type: '产品', route: '/products', category: 'products' },
-      { id: 9, title: '技术论坛活动', type: '新闻', route: '/news', category: 'news' },
-      { id: 10, title: '联系我们', type: '联系', route: '/contact', category: 'contact' }
-    ])
-    
     // 计算属性：检查用户是否已认证
     const isAuthenticated = computed(() => store.getters.isAuthenticated)
     // 计算属性：获取当前用户信息
@@ -120,19 +109,20 @@ export default{
       }
       
       const query = searchQuery.value.toLowerCase().trim()
+      // 关键修复：添加属性存在性检查
       const results = searchData.filter(item => 
-        item.title.toLowerCase().includes(query) || 
-        item.type.toLowerCase().includes(query) ||
-        item.category.toLowerCase().includes(query)
+        (item.title && item.title.toLowerCase().includes(query)) || 
+        (item.type && item.type.toLowerCase().includes(query)) ||
+        (item.category && item.category.toLowerCase().includes(query))
       )
       
-      searchResults.value = results.slice(0, 5) // 最多显示5条结果
+      searchResults.value = results.slice(0, 5)
       showSearchResults.value = true
     }
     
     // 搜索输入处理（实时搜索）
     const handleSearchInput = () => {
-      if (searchQuery.value.length > 2) {
+      if (searchQuery.value.length > 0) { // 改为1个字符即可搜索
         performSearch()
       } else {
         showSearchResults.value = false
@@ -296,8 +286,8 @@ export default{
   display: flex;
   /* 移除列表默认样式 */
   list-style: none;
-  /* 子元素间距2rem */
-  gap: 2rem;
+  /* 子元素间距1.5rem */
+  gap: 1.5rem;
   /* 移除默认外边距 */
   margin: 0;
   /* 垂直居中对齐 */

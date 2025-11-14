@@ -8,6 +8,9 @@ import Products from '../components/Products.vue'
 import News from '../components/News.vue'
 import Contact from '../components/Contact.vue'
 
+import SearchResults from '../components/SearchResults.vue'
+
+
 // 定义路由规则
 const routes = [
   { path: '/', name: 'Home', component: Hero }, // 首页对应 Hero 组件
@@ -16,7 +19,7 @@ const routes = [
   { path: '/products', name: 'Products', component: Products } ,// 产品页面
   { path: '/news', name: 'News', component: News }, // 新闻页面
   { path: '/contact', name: 'Contact', component: Contact }, // 联系页面
-
+  {path: '/search',name: 'SearchResults',component: SearchResults},//搜索
 ]
 
 // 创建路由实例
