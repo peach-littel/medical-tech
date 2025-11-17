@@ -69,8 +69,7 @@
   </header>
 </template>
 
-<script>
-// 导入Vue组合式API
+<script>// 导入Vue组合式API
 import { computed, ref, onMounted, onUnmounted } from 'vue'
 // 导入Vuex store
 import { useStore } from 'vuex'

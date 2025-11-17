@@ -30,8 +30,7 @@
 
 <script>
 export default{
-  // eslint-disable-next-line vue/multi-word-component-names
-  name:"Products"
+  name:'ProDucts'
 }
 </script>
 
@@ -50,7 +49,7 @@ margin-top: 30px;
 
 .products-gird{
   display: grid;
-  /* 最小250px：确保卡片有足够显示空间 等分剩余空间：1fr 让卡片平均分配宽度 */
+  /* 最小300px：确保卡片有足够显示空间 等分剩余空间：1fr 让卡片平均分配宽度 */
   grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
   gap: 2rem;
   max-width: 1400px;

@@ -8,12 +8,16 @@ import router from './router'
 // 导入Vuex store配置
 import store from './store'
 
+import CountUp from 'vue-countup-v3'
+
 // 引入 Bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 
 // 创建Vue应用实例
 const app = createApp(App)
+
+app.component('CountUp', CountUp)
 
 // 使用Vuex store
 app.use(store)

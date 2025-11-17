@@ -49,8 +49,7 @@ import { useStore } from 'vuex'
 import * as bootstrap from 'bootstrap/dist/js/bootstrap.bundle.min.js'
 
 export default{
-  // eslint-disable-next-line vue/multi-word-component-names
-  name:'Contact',
+  name:'ConTact',
   setup() {
     const store = useStore()
     const sending = ref(false)

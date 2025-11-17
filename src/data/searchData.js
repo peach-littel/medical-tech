@@ -1,4 +1,3 @@
-// src/data/searchData.js
 export const searchData = [
   { 
     id: 1, 

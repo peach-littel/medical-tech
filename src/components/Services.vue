@@ -34,8 +34,7 @@
 
 <script>
 export default{
-  // eslint-disable-next-line vue/multi-word-component-names
-  name:"Services"
+  name:"SerVices"
 }
 </script>
 
@@ -44,20 +43,21 @@ export default{
   padding: 5rem 2rem;
 }
 .services h1{
-text-align: center;
-font-size: 2.5rem;
-color: #2c5530;
-margin-bottom: 3rem;
-margin-top: 30px;
+  text-align: center;
+  font-size: 2.5rem;
+  color: #2c5530;
+  margin-bottom: 3rem;
+  margin-top: 50px;
 }
 
 .services-gird{
-  display: flex;
-  /* 最小250px：确保卡片有足够显示空间 等分剩余空间：1fr 让卡片平均分配宽度 */
-  grid-template-columns: repeat(auto-fit,minmax(150px,1fr));
+  display: grid;
+  /* 最小300px：确保卡片有足够显示空间 等分剩余空间：1fr 让卡片平均分配宽度 */
+  grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
   gap: 2rem;
   max-width: 1400px;
   margin: 0 auto;
+
 }
 .services-card{
   background: white;

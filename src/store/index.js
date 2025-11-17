@@ -1,4 +1,4 @@
-// store/index.js
+
 // 导入Vuex的createStore函数
 import { createStore } from 'vuex'
 

@@ -1,3 +1,4 @@
+<!-- src/components/Hero.vue -->
 <template>
   <!-- 网站首屏轮播展示 -->
   <section id="home" class="hero">
@@ -11,7 +12,7 @@
           <div class="hero-contant">
             <h1>医疗科技</h1>
             <p>致力于推动医疗领域的创新性发展</p>
-            <button class="btn">了解更多</button>
+            <button class="btn btn-primary" @click="navigateTo('/products')">了解更多</button>
           </div>
         </div>
         
@@ -21,7 +22,7 @@
           <div class="hero-contant">
             <h1>专业团队</h1>
             <p>提供全面的医疗服务，支持临床诊断</p>
-            <button class="btn">了解更多</button>
+            <button class="btn btn-primary" @click="navigateTo('/services')">了解更多</button>
           </div>
         </div>
         
@@ -31,7 +32,7 @@
           <div class="hero-contant">
             <h1>全球合作</h1>
             <p>携手顶尖机构共创医疗未来</p>
-            <button class="btn">合作咨询</button>
+            <button class="btn btn-primary" @click="navigateTo('/contact')">合作咨询</button>
           </div>
         </div>
       </div>
@@ -48,21 +49,25 @@
 
 <script>
 import { onMounted, ref } from 'vue'
-// 修正 Swiper 导入方式
+import { useRouter } from 'vue-router'
 import Swiper from 'swiper'
-// 修正 CSS 导入
 import 'swiper/swiper-bundle.css'
-// 修正模块导入方式
 import { Navigation, Pagination, Autoplay } from 'swiper/modules'
 
 export default {
-  // eslint-disable-next-line vue/multi-word-component-names
-  name: 'Hero',
+  name: 'HeRo',
   setup() {
     const swiperContainer = ref(null)
+    const router = useRouter()
     // eslint-disable-next-line no-unused-vars
     let swiper = null
 
+    // 导航到指定路由
+    const navigateTo = (path) => {
+      router.push(path)
+    }
+
+    
     onMounted(() => {
       // 初始化Swiper
       swiper = new Swiper(swiperContainer.value, {
@@ -79,12 +84,19 @@ export default {
         pagination: {
           el: '.swiper-pagination',
           clickable: true // 允许点击指示器切换
+        },
+        // 响应式设置
+        breakpoints: {
+          768: {
+            slidesPerView: 1
+          }
         }
       })
     })
 
     return {
-      swiperContainer
+      swiperContainer,
+      navigateTo,
     }
   }
 }
@@ -117,7 +129,7 @@ export default {
   object-fit: cover; /* 保持比例填充容器 */
 }
 
-/* 文字内容样式（保持原有设计） */
+/* 文字内容样式 */
 .hero-contant {
   position: absolute;
   top: 50%;
@@ -126,7 +138,6 @@ export default {
   text-align: center;
   z-index: 10; /* 确保在媒体上方 */
   padding: 0 2rem;
-  /* 新增半透明背景增强文字可读性 */
   background-color: rgba(0, 0, 0, 0.3);
   border-radius: 8px;
   padding: 2rem 3rem;
@@ -144,19 +155,25 @@ export default {
   opacity: 0.9;
 }
 
-.btn {
+/* 按钮样式 - 与其他页面保持一致 */
+.btn-primary {
   cursor: pointer;
-  background-color: #fff;
-  color: #2c5530;
-  padding: 1rem 3rem;
+  background-color: #2c5530;
+  color: white;
+  padding: 0.75rem 2rem;
   font-size: 1.1rem;
   border-radius: 5px;
-  font-weight: 600;
+  font-weight: 500;
   border: none;
-  transition: transform 0.3s;
+  transition: background 0.3s;
+  height: 50px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.btn:hover {
+.btn-primary:hover {
+  background-color: #4a7c59;
   transform: translateY(-2px);
 }
 
@@ -200,7 +217,7 @@ export default {
     font-size: 1.2rem;
   }
   
-  .btn {
+  .btn-primary {
     padding: 0.8rem 2rem;
     font-size: 1rem;
   }
