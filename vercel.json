@@ -1,5 +1,13 @@
 {
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self' *.vercel.app; script-src 'self' 'unsafe-inline' 'unsafe-eval' *.vercel.com *.vercel.app; style-src 'self' 'unsafe-inline' *.vercel.com *.vercel.app *.gstatic.com; img-src 'self' *.vercel.com *.vercel.app *.gstatic.com data:; font-src 'self' *.vercel.com *.vercel.app *.gstatic.com data:;"
+        }
+      ]
+    }
   ]
 }
