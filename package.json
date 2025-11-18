@@ -10,8 +10,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "eslint . --fix --cache",
-    "deploy": "gh-pages -d dist -b gh-pages"
+    "lint": "eslint . --fix --cache"
   },
   "dependencies": {
     "bootstrap": "^5.3.8",
