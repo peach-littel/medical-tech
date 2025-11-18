@@ -47,7 +47,7 @@
                 <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"/>
               </svg>
             </div>
-            <CountUp :end="50" suffix="+" />
+            <h3>50+</h3>
             <div class="stat-label">研发项目</div>
           </div>
           <div class="stat-card">
@@ -58,7 +58,7 @@
                 <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
               </svg>
             </div>
-            <CountUp :end="100" suffix="+" />
+            <h3>100+</h3>
             <div class="stat-label">专业团队</div>
           </div>
           <div class="stat-card">
@@ -67,7 +67,7 @@
                 <path d="M12.163 13.163a3 3 0 0 1-3.464 0l-.289-.29.29-.289a3 3 0 0 1 0-3.464l-.707-.707a3 3 0 0 1 0-3.464l.29-.289-.289-.29a3 3 0 0 1 0-3.464l-.289-.29.29-.289a3 3 0 0 1 3.464 0l.289.29-.29.289a3 3 0 0 1 3.464 0l.707.708a3 3 0 0 1 0 3.464l-.29.289.289.29a3 3 0 0 1 0 3.464l-.289.29-.29-.289a3 3 0 0 1-3.464 0zM8 10.93a2.93 2.93 0 1 0 0-5.86 2.93 2.93 0 0 0 0 5.86z"/>
               </svg>
             </div>
-            <CountUp :end="10" suffix="+" />
+            <h3>10+</h3>
             <div class="stat-label">国际合作</div>
           </div>
           <div class="stat-card">
@@ -76,7 +76,7 @@
                 <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm0 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm-3.646 6.646a.5.5 0 0 1 .708.708L4.707 8.707l2.646 2.647a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3zm7.292 0a.5.5 0 0 0-.708.708L11.293 8.707l-2.646 2.647a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L11.293 7.293 8.646 4.646a.5.5 0 1 0-.708.708l2.647 2.646L8.646 9.354a.5.5 0 1 0 .708.708l2.647-2.647 2.646 2.647a.5.5 0 0 0 .708-.708l-3-3z"/>
               </svg>
             </div>
-            <CountUp :end="80" suffix="+" />
+            <h3>80+</h3>
             <div class="stat-label">覆盖国家</div>
           </div>
         </div>
@@ -134,15 +134,10 @@
 </template>
 
 <script>
-import CountUp from 'vue-countup-v3'
-
 export default {
   name: 'AboutUs',
-  components: {
-    CountUp
-  },
+  
   setup() {
-
     // 时间线数据
     const timelineData = [
       {
@@ -178,19 +173,19 @@ export default {
         name: '张明教授',
         position: '首席科学家',
         bio: 'XX工程院院士，肿瘤诊断领域权威专家，拥有30年临床与研究经验',
-        photo: 'src/assets/professor1.png'
+        photo: 'src/assets/members/professor1.png'
       },
       {
         name: '李华博士',
         position: '研发总监',
         bio: '前XX诊所研究员，在精准医疗领域发表论文50余篇',
-        photo: 'src/assets/professor2.png'
+        photo: 'src/assets/members/professor2.png'
       },
       {
         name: '王静教授',
         position: 'XX实验室主任',
         bio: 'XX大学计算机系博士，专注于医疗人工智能算法研究',
-        photo: 'src/assets/professor3.png'
+        photo: 'src/assets/members/professor3.png'
       }
     ]
 
@@ -207,22 +202,22 @@ export default {
       {
         title: '国家科学技术进步奖二等奖',
         year: '2022',
-        image: 'src/assets/award2.png'
+        image: 'src/assets/award/award2.png'
       },
       {
         title: '国家级专精特新"小巨人"企业',
         year: '2021',
-        image: 'src/assets/award1.png'
+        image: 'src/assets/award/award1.png'
       },
       {
         title: 'ISO13485医疗器械质量管理体系认证',
         year: '2020',
-        image: 'src/assets/award3.png'
+        image: 'src/assets/award/award3.png'
       },
       {
         title: '中国医疗设备行业创新领军企业',
         year: '2019',
-        image: 'src/assets/award.png'
+        image: 'src/assets/award/award.png'
       }
     ]
 
