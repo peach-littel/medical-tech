@@ -10,7 +10,11 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "eslint . --fix --cache"
+    "lint": "eslint . --fix --cache",
+    "check:build": "node check-build.js",
+    "check:fonts": "node check-fonts.js",
+    "fix:fonts": "node emergency-font-fix.js",
+    "deploy": "npm run build && npm run fix:fonts && git add . && git commit -m \"fix: CSP\" && git push"
   },
   "dependencies": {
     "bootstrap": "^5.3.8",
