@@ -1,9 +1,7 @@
-name: Deploy Vue 3 to GitHub Pages
+name: Deploy Vue App
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
     branches: [ main ]
 
 permissions:
@@ -22,77 +20,70 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Setup Node.js 20
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20.19.0'  # 指定确切版本
           cache: 'npm'
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
 
       - name: Install dependencies
         run: npm install
 
-      - name: Build project
+      - name: Build with Vite
         run: npm run build
 
       - name: Fix CSP issues
         run: |
           # 创建修复脚本
-          cat > fix-csp.js << 'SCRIPTEOF'
-          import fs from 'fs';
-          import path from 'path';
+          cat > fix-csp.js << 'EOF'
+          const fs = require('fs');
+          const path = require('path');
           
-          console.log('🔧 Fixing CSP issues...');
+          console.log('Fixing CSP issues...');
           
-          function fixFiles(dir) {
-            const files = [];
-            function scan(currentPath) {
-              const items = fs.readdirSync(currentPath);
-              items.forEach(item => {
-                const fullPath = path.join(currentPath, item);
-                const stat = fs.statSync(fullPath);
-                if (stat.isDirectory()) {
-                  scan(fullPath);
-                } else if (['.css', '.js', '.html'].includes(path.extname(item))) {
-                  files.push(fullPath);
-                }
-              });
-            }
-            scan(dir);
-            return files;
-          }
-          
-          const files = fixFiles('./dist');
-          let fixed = 0;
-          
-          files.forEach(file => {
-            let content = fs.readFileSync(file, 'utf8');
-            const patterns = [
-              /url\("data:application\/font-woff[^"]+"\)/g,
-              /url\("data:application\/font-woff2[^"]+"\)/g,
-              /"data:application\/font[^"]*"/g
-            ];
+          function processDirectory(dir) {
+            const items = fs.readdirSync(dir);
+            let fixed = 0;
             
-            patterns.forEach(pattern => {
-              const matches = content.match(pattern);
-              if (matches) {
-                fixed += matches.length;
-                content = content.replace(pattern, '/* removed-inline-font */');
+            items.forEach(item => {
+              const fullPath = path.join(dir, item);
+              const stat = fs.statSync(fullPath);
+              
+              if (stat.isDirectory()) {
+                fixed += processDirectory(fullPath);
+              } else if (path.extname(item) === '.css') {
+                let content = fs.readFileSync(fullPath, 'utf8');
+                const patterns = [
+                  /url\("data:application\/font-woff[^"]*"\)/g,
+                  /url\("data:application\/font-woff2[^"]*"\)/g
+                ];
+                
+                patterns.forEach(pattern => {
+                  const matches = content.match(pattern);
+                  if (matches) {
+                    fixed += matches.length;
+                    content = content.replace(pattern, '/* font-removed */');
+                  }
+                });
+                
+                fs.writeFileSync(fullPath, content, 'utf8');
               }
             });
             
-            fs.writeFileSync(file, content, 'utf8');
-          });
+            return fixed;
+          }
           
-          console.log(\`✅ Fixed \${fixed} inline resources\`);
-          SCRIPTEOF
+          const totalFixed = processDirectory('./dist');
+          console.log(\`Fixed \${totalFixed} inline font references\`);
+          EOF
           
           node fix-csp.js
 
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v2
         with:
           path: ./dist
 
@@ -105,4 +96,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v2
