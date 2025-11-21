@@ -6,92 +6,103 @@ on:
   pull_request:
     branches: [ main ]
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
-    
     steps:
-    - name: Checkout
-      uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v4
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '18'
-        cache: 'npm'
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
 
-    - name: Install dependencies
-      run: npm install
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
 
-    - name: Build project
-      run: npm run build
+      - name: Install dependencies
+        run: npm install
 
-    - name: Fix CSP issues
-      run: |
-        # 创建并运行修复脚本
-        cat > fix-csp.js << 'EOF'
-        import fs from 'fs';
-        import path from 'path';
+      - name: Build project
+        run: npm run build
 
-        console.log('🔧 Fixing CSP issues in built files...');
-
-        function fixCSSFiles(dir) {
-          const files = [];
+      - name: Fix CSP issues
+        run: |
+          # 创建修复脚本
+          cat > fix-csp.js << 'SCRIPTEOF'
+          import fs from 'fs';
+          import path from 'path';
           
-          function scan(currentPath) {
-            const items = fs.readdirSync(currentPath);
-            items.forEach(item => {
-              const fullPath = path.join(currentPath, item);
-              const stat = fs.statSync(fullPath);
-              if (stat.isDirectory()) {
-                scan(fullPath);
-              } else if (path.extname(item) === '.css') {
-                files.push(fullPath);
-              }
-            });
+          console.log('🔧 Fixing CSP issues...');
+          
+          function fixFiles(dir) {
+            const files = [];
+            function scan(currentPath) {
+              const items = fs.readdirSync(currentPath);
+              items.forEach(item => {
+                const fullPath = path.join(currentPath, item);
+                const stat = fs.statSync(fullPath);
+                if (stat.isDirectory()) {
+                  scan(fullPath);
+                } else if (['.css', '.js', '.html'].includes(path.extname(item))) {
+                  files.push(fullPath);
+                }
+              });
+            }
+            scan(dir);
+            return files;
           }
           
-          scan(dir);
-          return files;
-        }
-
-        const cssFiles = fixCSSFiles('./dist');
-        let fixedCount = 0;
-
-        cssFiles.forEach(file => {
-          let content = fs.readFileSync(file, 'utf8');
+          const files = fixFiles('./dist');
+          let fixed = 0;
           
-          // Remove inline fonts
-          const fontPatterns = [
-            /url\("data:application\/font-woff[^"]+"\)/g,
-            /url\("data:application\/font-woff2[^"]+"\)/g,
-            /url\("data:application\/x-font-woff[^"]+"\)/g
-          ];
-          
-          fontPatterns.forEach(pattern => {
-            const matches = content.match(pattern);
-            if (matches) {
-              fixedCount += matches.length;
-              content = content.replace(pattern, '/* inline-font-removed */');
-            }
+          files.forEach(file => {
+            let content = fs.readFileSync(file, 'utf8');
+            const patterns = [
+              /url\("data:application\/font-woff[^"]+"\)/g,
+              /url\("data:application\/font-woff2[^"]+"\)/g,
+              /"data:application\/font[^"]*"/g
+            ];
+            
+            patterns.forEach(pattern => {
+              const matches = content.match(pattern);
+              if (matches) {
+                fixed += matches.length;
+                content = content.replace(pattern, '/* removed-inline-font */');
+              }
+            });
+            
+            fs.writeFileSync(file, content, 'utf8');
           });
           
-          fs.writeFileSync(file, content, 'utf8');
-        });
+          console.log(\`✅ Fixed \${fixed} inline resources\`);
+          SCRIPTEOF
+          
+          node fix-csp.js
 
-        console.log(`✅ Fixed ${fixedCount} inline font references`);
-        EOF
-        
-        node fix-csp.js
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
 
-    - name: Setup Pages
-      uses: actions/configure-pages@v2
-
-    - name: Upload artifact
-      uses: actions/upload-pages-artifact@v1
-      with:
-        path: ./dist
-
-    - name: Deploy to GitHub Pages
-      id: deployment
-      uses: actions/deploy-pages@v1
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
