@@ -6,7 +6,7 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 
 
 export default defineConfig({
-  base: '/',
+  base: '/medical-tech/' ,
   plugins: [
     vue(),
     vueDevTools(),
