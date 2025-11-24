@@ -89,7 +89,7 @@ export default {
           category: "software",
           description: "针对高通量测序数据的专业分析平台，支持全基因组、外显子组等多类型数据解读",
           features: ["AI辅助变异位点识别", "临床数据库联动", "自动化报告生成"],
-          imgUrl: "/medical-tech/images/product1.png",
+          imgUrl: "/images/product1.png",
           altText: "基因测序数据分析系统界面展示",
           detailUrl: "/products/1"
         },
@@ -100,7 +100,7 @@ export default {
           category: "equipment",
           description: "高通量自动化核酸提取设备，适用于临床样本快速处理，减少人工操作误差",
           features: ["96孔板同步处理", "封闭式提取防污染", "适配多种样本类型"],
-          imgUrl: "/medical-tech/images/product2.png",
+          imgUrl: "/images/product2.png",
           altText: "全自动核酸提取仪实物图",
           detailUrl: "/products/2"
         },
@@ -110,7 +110,7 @@ export default {
           category: "software",
           description: "基于深度学习的数字病理分析工具，辅助病理医师进行快速精准诊断",
           features: ["HE染色自动识别", "肿瘤区域定量分析", "多中心数据协同"],
-          imgUrl: "/medical-tech/images/product3.png",
+          imgUrl: "/images/product3.png",
           altText: "病理切片智能分析软件操作界面",
           detailUrl: "/products/3"
         },
@@ -120,7 +120,7 @@ export default {
           category: "service",
           description: "提供从样本处理到数据分析的一站式检测服务，支持科研合作与临床转化",
           features: ["ISO15189认证实验室", "72小时快速周转", "定制化分析方案"],
-          imgUrl: "/medical-tech/images/product5.png",
+          imgUrl: "/images/product5.png",
           altText: "临床检测实验室场景",
           detailUrl: "/products/4"
         }
