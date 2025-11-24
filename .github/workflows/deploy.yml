@@ -16,16 +16,9 @@ jobs:
           cache: 'npm'
           
       - run: npm install
-      - run: npm run build
+      - run: npm run build  # 此时 build 已包含 fix-build.js 的执行
       
-      - name: Fix CSP
-        run: |
-          if [ -d "./dist" ]; then
-            find ./dist -name "*.css" -exec sed -i 's|data:application/font[^"]*|/* removed */|g' {} \;
-            echo "CSP issues fixed"
-          fi
-          
-      - name: Deploy
+      - name: Deploynpm
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
