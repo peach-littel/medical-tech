@@ -12,8 +12,8 @@
 
       <!-- 产品分类筛选（新增） -->
       <div class="product-filters">
-        <button 
-          v-for="filter in filters" 
+        <button
+          v-for="filter in filters"
           :key="filter.id"
           :class="{'active': activeFilter === filter.id}"
           @click="activeFilter = filter.id"
@@ -24,36 +24,36 @@
 
       <!-- 产品网格 -->
       <div class="products-grid">
-        <div 
-          class="products-card" 
-          v-for="product in filteredProducts" 
+        <div
+          class="products-card"
+          v-for="product in filteredProducts"
           :key="product.id"
         >
           <!-- 产品标签（如新品/热门） -->
           <div class="product-tag" v-if="product.tag">
             {{ product.tag }}
           </div>
-          
-          <img 
-            :src="product.imgUrl" 
-            :alt="product.altText" 
+
+          <img
+            :src="product.imgUrl"
+            :alt="product.altText"
             class="product-img"
           >
-          
+
           <div class="product-info">
             <h3 class="product-title">{{ product.title }}</h3>
             <p class="product-desc">{{ product.description }}</p>
-            
+
             <!-- 产品核心特点（新增） -->
             <ul class="product-features">
               <li v-for="(feature, idx) in product.features" :key="idx">
                 {{ feature }}
               </li>
             </ul>
-            
+
             <!-- 查看详情按钮 -->
-            <router-link 
-              :to="product.detailUrl" 
+            <router-link
+              :to="product.detailUrl"
               class="detail-btn"
             >
               查看详情 <i class="arrow-icon">→</i>
@@ -67,7 +67,8 @@
 
 <script>
 export default {
-  name: "ProDucts", 
+  // eslint-disable-next-line vue/multi-word-component-names
+  name: "Products",
   data() {
     return {
       // 产品分类筛选
@@ -78,7 +79,7 @@ export default {
         { id: 'service', name: '配套服务' }
       ],
       activeFilter: 'all',
-      
+
       // 产品数据（结构化管理，便于维护）
       products: [
         {
