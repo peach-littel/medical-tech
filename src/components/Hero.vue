@@ -8,7 +8,7 @@
       <div class="swiper-wrapper">
         <!-- 轮播项1：图片背景 -->
         <div class="swiper-slide">
-          <img src="/images/image.png" alt="医疗科技图片" class="slide-media">
+          <img src="../assets/image.png" alt="医疗科技图片" class="slide-media">
           <div class="hero-contant">
             <h1>医疗科技</h1>
             <p>致力于推动医疗领域的创新性发展</p>
@@ -18,7 +18,7 @@
 
         <!-- 轮播项2：图片背景 -->
         <div class="swiper-slide">
-          <img src="/images/image3.png" alt="医疗科技图片" class="slide-media">
+          <img src="../assets/image3.png" alt="医疗科技图片" class="slide-media">
           <div class="hero-contant">
             <h1>专业团队</h1>
             <p>提供全面的医疗服务，支持临床诊断</p>
@@ -28,7 +28,7 @@
 
         <!-- 轮播项3：图片背景 -->
         <div class="swiper-slide">
-          <img src="/images/image1.png" alt="医疗创新图片" class="slide-media">
+          <img src="../assets/image1.png" alt="医疗创新图片" class="slide-media">
           <div class="hero-contant">
             <h1>全球合作</h1>
             <p>携手顶尖机构共创医疗未来</p>

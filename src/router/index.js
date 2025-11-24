@@ -7,7 +7,8 @@ import Services from '../components/Services.vue'
 import Products from '../components/Products.vue'
 import News from '../components/News.vue'
 import Contact from '../components/Contact.vue'
-
+import ProductDetail from '../views/ProductDetail.vue'
+import NewsDetail from '../views/NewsDetail.vue'
 import SearchResults from '../components/SearchResults.vue'
 
 
@@ -20,6 +21,16 @@ const routes = [
   { path: '/news', name: 'NewS', component: News }, // 新闻页面
   { path: '/contact', name: 'ConTact', component: Contact }, // 联系页面
   {path: '/search',name: 'SearchResults',component: SearchResults},//搜索
+  {
+    path: '/products/:id',
+    name: 'ProductDetail',
+    component: ProductDetail
+  },
+  {
+    path: '/news/:id',
+    name: 'NewsDetail',
+    component: NewsDetail
+  }
 ]
 
 // 创建路由实例

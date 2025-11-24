@@ -17,7 +17,7 @@
         <p>XX医疗科技有限公司自20XX年应运而生,便以"智启医疗,惠泽民生"为初心使命,深耕医疗技术领域十五载。在时代浪潮的淬炼中,公司始终秉持"创新为核、品质为基、合作共赢"的发展理念,从最初专注于精准医疗设备研发的初创企业,逐步成长为集医疗技术研发、设备智造、临床转化、国际合作于一体的现代化医疗科技企业,为全球医疗健康事业发展注入持续动能。</p>
       </div>
       <div class="intro-image">
-        <img src="/images/company.png" alt="公司办公环境" class="rounded-lg shadow-lg">
+        <img src="../assets/company.png" alt="公司办公环境" class="rounded-lg shadow-lg">
       </div>
     </div>
 
@@ -173,28 +173,28 @@ export default {
         name: '张明教授',
         position: '首席科学家',
         bio: 'XX工程院院士，肿瘤诊断领域权威专家，拥有30年临床与研究经验',
-        photo: '/images/professor1.png'
+        photo: 'src/assets/professor1.png'
       },
       {
         name: '李华博士',
         position: '研发总监',
         bio: '前XX诊所研究员，在精准医疗领域发表论文50余篇',
-        photo: '/images/professor2.png'
+        photo: 'src/assets/professor2.png'
       },
       {
         name: '王静教授',
         position: 'XX实验室主任',
         bio: 'XX大学计算机系博士，专注于医疗人工智能算法研究',
-        photo: '/images/professor3.png'
+        photo: 'src/assets/professor3.png'
       }
     ]
 
     // 合作伙伴数据
     const partners = [
-      { name: '梅奥诊所', logo: '/images/MAYO.png' },
-      { name: '奥林巴斯', logo: '/images/Olympus.png' },
-      { name: '慕尼黑大学', logo: '/images/LMU.png' },
-      { name: '约翰·霍普金斯医院', logo: '/images/Johns.png' }
+      { name: '梅奥诊所', logo: 'src/assets/MAYO.png' },
+      { name: '奥林巴斯', logo: 'src/assets/Olympus.png' },
+      { name: '慕尼黑大学', logo: 'src/assets/LMU.png' },
+      { name: '约翰·霍普金斯医院', logo: 'src/assets/Johns.png' }
     ]
 
     // 荣誉资质数据
@@ -202,22 +202,22 @@ export default {
       {
         title: '国家科学技术进步奖二等奖',
         year: '2022',
-        image: '/images/award2.png'
+        image: 'src/assets/award2.png'
       },
       {
         title: '国家级专精特新"小巨人"企业',
         year: '2021',
-        image: '/images/award1.png'
+        image: 'src/assets/award1.png'
       },
       {
         title: 'ISO13485医疗器械质量管理体系认证',
         year: '2020',
-        image: '/images/award3.png'
+        image: 'src/assets/award3.png'
       },
       {
         title: '中国医疗设备行业创新领军企业',
         year: '2019',
-        image: '/images/award.png'
+        image: 'src/assets/award.png'
       }
     ]
 

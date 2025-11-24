@@ -54,12 +54,9 @@
             <p class="news-desc">{{ item.description }}</p>
 
             <!-- 阅读更多按钮 -->
-            <router-link
-              :to="item.detailUrl"
-              class="read-more"
-            >
-              阅读全文 <i class="arrow-icon">→</i>
-            </router-link>
+            <div v-for="item in news" :key="item.id">
+              <router-link :to="`/news/${item.id}`">{{ item.title }}</router-link>
+            </div>
           </div>
         </article>
       </div>
@@ -122,7 +119,7 @@ export default {
           date: "2024-06-15",
           readTime: "3分钟",
           description: "公司自主研发的靶向抗肿瘤药物MT-2023已完成临床一期试验，安全性与有效性指标均优于预期，即日起正式启动二期临床试验，预计纳入200例晚期实体瘤患者...",
-          imgUrl: "public/images/product3.png",
+          imgUrl: "src/assets/product3.png",
           altText: "抗癌新药研发实验室场景",
           detailUrl: "/news/1"
         },
@@ -133,7 +130,7 @@ export default {
           date: "2024-05-28",
           readTime: "2分钟",
           description: "双方将聚焦精准医疗领域，围绕肿瘤早期诊断技术展开深度合作，计划三年内完成3项核心技术攻关，并推动2项成果转化...",
-          imgUrl: "public/images/image3.png",
+          imgUrl: "src/assets/image3.png",
           altText: "国际合作签约仪式",
           detailUrl: "/news/2"
         },
@@ -145,7 +142,7 @@ export default {
           date: "2024-04-10",
           readTime: "4分钟",
           description: "本次论坛汇集了12个国家的300余位专家学者，共同探讨人工智能在医学影像诊断、临床决策支持等领域的应用前景，公司CEO发表主题演讲...",
-          imgUrl: "public/images/image1.png",
+          imgUrl: "src/assets/image1.png",
           altText: "医疗科技论坛现场",
           detailUrl: "/news/3"
         },
@@ -156,7 +153,7 @@ export default {
           date: "2024-03-05",
           readTime: "1分钟",
           description: "凭借在医疗设备核心技术领域的持续创新与突破，公司成功入选第三批国家级专精特新「小巨人」企业，成为行业技术标杆...",
-          imgUrl: "public/images/award1.png",
+          imgUrl: "src/assets/award/award1.png",
           altText: "公司荣誉证书",
           detailUrl: "/news/4"
         },
@@ -167,7 +164,7 @@ export default {
           date: "2024-02-20",
           readTime: "2分钟",
           description: "公司自主研发的全自动核酸检测系统通过国家药品监督管理局审批，该系统检测效率较传统方法提升3倍，且操作流程简化，适合基层医疗机构普及...",
-          imgUrl: "public/images/image2.png",
+          imgUrl: "src/assets/image2.png",
           altText: "核酸检测系统设备图",
           detailUrl: "/news/5"
         }
