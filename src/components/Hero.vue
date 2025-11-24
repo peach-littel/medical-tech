@@ -8,27 +8,27 @@
       <div class="swiper-wrapper">
         <!-- 轮播项1：图片背景 -->
         <div class="swiper-slide">
-          <img src="../assets/image.png" alt="医疗科技图片" class="slide-media">
+          <img src="/images/image.png" alt="医疗科技图片" class="slide-media">
           <div class="hero-contant">
             <h1>医疗科技</h1>
             <p>致力于推动医疗领域的创新性发展</p>
             <button class="btn btn-primary" @click="navigateTo('/products')">了解更多</button>
           </div>
         </div>
-        
+
         <!-- 轮播项2：图片背景 -->
         <div class="swiper-slide">
-          <img src="../assets/image3.png" alt="医疗科技图片" class="slide-media">
+          <img src="/images/image3.png" alt="医疗科技图片" class="slide-media">
           <div class="hero-contant">
             <h1>专业团队</h1>
             <p>提供全面的医疗服务，支持临床诊断</p>
             <button class="btn btn-primary" @click="navigateTo('/services')">了解更多</button>
           </div>
         </div>
-        
+
         <!-- 轮播项3：图片背景 -->
         <div class="swiper-slide">
-          <img src="../assets/image1.png" alt="医疗创新图片" class="slide-media">
+          <img src="/images/image1.png" alt="医疗创新图片" class="slide-media">
           <div class="hero-contant">
             <h1>全球合作</h1>
             <p>携手顶尖机构共创医疗未来</p>
@@ -36,11 +36,11 @@
           </div>
         </div>
       </div>
-      
+
       <!-- 轮播控制按钮 -->
       <div class="swiper-button-prev"></div>
       <div class="swiper-button-next"></div>
-      
+
       <!-- 轮播指示器 -->
       <div class="swiper-pagination"></div>
     </div>
@@ -67,7 +67,7 @@ export default {
       router.push(path)
     }
 
-    
+
     onMounted(() => {
       // 初始化Swiper
       swiper = new Swiper(swiperContainer.value, {
@@ -212,11 +212,11 @@ export default {
   .hero-contant h1 {
     font-size: 2rem;
   }
-  
+
   .hero-contant p {
     font-size: 1.2rem;
   }
-  
+
   .btn-primary {
     padding: 0.8rem 2rem;
     font-size: 1rem;

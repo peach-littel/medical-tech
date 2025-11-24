@@ -24,7 +24,7 @@
             </div>
           </div>
           <div class="service-info">
-            <img src="../assets/image2.png" alt="全基因组测序服务" class="service-img">
+            <img src="/images/image2.png" alt="全基因组测序服务" class="service-img">
             <h3 class="service-title">全基因组测序</h3>
             <p class="service-text">
               采用高通量测序技术，对人类全基因组进行全面解析，提供肿瘤易感基因检测、遗传病筛查等精准医疗方案，数据准确率达99.99%。
@@ -49,7 +49,7 @@
             </div>
           </div>
           <div class="service-info">
-            <img src="../assets/service1.png" alt="生物信息分析服务" class="service-img">
+            <img src="/images/service1.png" alt="生物信息分析服务" class="service-img">
             <h3 class="service-title">生物信息分析</h3>
             <p class="service-text">
               基于AI算法的生物数据深度挖掘服务，提供基因表达分析、蛋白质结构预测及代谢组学研究支持，助力科研成果转化。
@@ -75,7 +75,7 @@
             </div>
           </div>
           <div class="service-info">
-            <img src="../assets/service2.png" alt="临床检测服务" class="service-img">
+            <img src="/images/service2.png" alt="临床检测服务" class="service-img">
             <h3 class="service-title">临床检测服务</h3>
             <p class="service-text">
               提供分子诊断、病理检测等临床检测服务，配备全自动检测平台，实现样本接收至报告生成的全流程标准化管理，检测周期缩短30%。
@@ -99,7 +99,7 @@
             </div>
           </div>
           <div class="service-info">
-            <img src="../assets/service3.png" alt="智能设备部署服务" class="service-img">
+            <img src="/images/service3.png" alt="智能设备部署服务" class="service-img">
             <h3 class="service-title">智能设备部署</h3>
             <p class="service-text">
               提供医疗设备整体解决方案，包括AI辅助诊断系统、高通量核酸检测平台等设备的安装调试、技术培训及售后支持。
@@ -351,7 +351,7 @@ export default {
   .section-main-title {
     font-size: 2rem;
   }
-  
+
   .services-container {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -361,15 +361,15 @@ export default {
   .section-padding {
     padding: 5rem 1rem;
   }
-  
+
   .section-main-title {
     font-size: 1.7rem;
   }
-  
+
   .services-container {
     grid-template-columns: 1fr;
   }
-  
+
   .service-img {
     height: 140px;
   }

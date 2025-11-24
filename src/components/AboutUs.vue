@@ -17,7 +17,7 @@
         <p>XX医疗科技有限公司自20XX年应运而生,便以"智启医疗,惠泽民生"为初心使命,深耕医疗技术领域十五载。在时代浪潮的淬炼中,公司始终秉持"创新为核、品质为基、合作共赢"的发展理念,从最初专注于精准医疗设备研发的初创企业,逐步成长为集医疗技术研发、设备智造、临床转化、国际合作于一体的现代化医疗科技企业,为全球医疗健康事业发展注入持续动能。</p>
       </div>
       <div class="intro-image">
-        <img src="../assets/company.png" alt="公司办公环境" class="rounded-lg shadow-lg">
+        <img src="/images/company.png" alt="公司办公环境" class="rounded-lg shadow-lg">
       </div>
     </div>
 
@@ -89,7 +89,7 @@
         <div class="team-section">
           <h2 class="section-title">专业团队</h2>
           <p class="section-desc">人才是创新的第一资源，公司始终将团队建设置于战略高度。目前，公司核心研发团队由3名两院院士领衔，汇聚了来自国内外顶尖医学院校、工程院校及知名医疗企业的专业人才。</p>
-          
+
           <div class="team-grid">
             <div class="team-card" v-for="(member, index) in teamMembers" :key="index">
               <div class="team-photo">
@@ -107,7 +107,7 @@
         <div class="cooperation-section">
           <h2 class="section-title">国际合作</h2>
           <p class="section-desc">在全球化发展进程中，公司始终坚持"引进来、走出去"相结合，积极搭建国际合作桥梁，与全球顶尖机构建立长期战略合作关系。</p>
-          
+
           <div class="partners-grid">
             <div class="partner-logo" v-for="(partner, index) in partners" :key="index">
               <img :src="partner.logo" :alt="partner.name">
@@ -136,7 +136,7 @@
 <script>
 export default {
   name: 'AboutUs',
-  
+
   setup() {
     // 时间线数据
     const timelineData = [
@@ -173,28 +173,28 @@ export default {
         name: '张明教授',
         position: '首席科学家',
         bio: 'XX工程院院士，肿瘤诊断领域权威专家，拥有30年临床与研究经验',
-        photo: 'src/assets/members/professor1.png'
+        photo: '/images/professor1.png'
       },
       {
         name: '李华博士',
         position: '研发总监',
         bio: '前XX诊所研究员，在精准医疗领域发表论文50余篇',
-        photo: 'src/assets/members/professor2.png'
+        photo: '/images/professor2.png'
       },
       {
         name: '王静教授',
         position: 'XX实验室主任',
         bio: 'XX大学计算机系博士，专注于医疗人工智能算法研究',
-        photo: 'src/assets/members/professor3.png'
+        photo: '/images/professor3.png'
       }
     ]
 
     // 合作伙伴数据
     const partners = [
-      { name: '梅奥诊所', logo: 'src/assets/MAYO.png' },
-      { name: '奥林巴斯', logo: 'src/assets/Olympus.png' },
-      { name: '慕尼黑大学', logo: 'src/assets/LMU.png' },
-      { name: '约翰·霍普金斯医院', logo: 'src/assets/Johns.png' }
+      { name: '梅奥诊所', logo: '/images/MAYO.png' },
+      { name: '奥林巴斯', logo: '/images/Olympus.png' },
+      { name: '慕尼黑大学', logo: '/images/LMU.png' },
+      { name: '约翰·霍普金斯医院', logo: '/images/Johns.png' }
     ]
 
     // 荣誉资质数据
@@ -202,22 +202,22 @@ export default {
       {
         title: '国家科学技术进步奖二等奖',
         year: '2022',
-        image: 'src/assets/award/award2.png'
+        image: '/images/award2.png'
       },
       {
         title: '国家级专精特新"小巨人"企业',
         year: '2021',
-        image: 'src/assets/award/award1.png'
+        image: '/images/award1.png'
       },
       {
         title: 'ISO13485医疗器械质量管理体系认证',
         year: '2020',
-        image: 'src/assets/award/award3.png'
+        image: '/images/award3.png'
       },
       {
         title: '中国医疗设备行业创新领军企业',
         year: '2019',
-        image: 'src/assets/award/award.png'
+        image: '/images/award.png'
       }
     ]
 
@@ -555,21 +555,21 @@ export default {
   .about-intro {
     grid-template-columns: 1fr;
   }
-  
+
   .timeline::after {
     left: 31px;
   }
-  
+
   .timeline-item {
     width: 100%;
     padding-left: 70px;
     padding-right: 25px;
   }
-  
+
   .timeline-item:nth-child(even) {
     left: 0;
   }
-  
+
   .timeline-item::after {
     left: 18px;
   }
@@ -579,12 +579,12 @@ export default {
   .banner-title {
     font-size: 2.2rem;
   }
-  
+
   .section-title {
     font-size: 1.8rem;
   }
-  
-  .about-intro, .timeline-section, .stats-section, 
+
+  .about-intro, .timeline-section, .stats-section,
   .team-cooperation, .awards-section {
     padding: 4rem 0;
   }
@@ -594,7 +594,7 @@ export default {
   .banner-title {
     font-size: 1.8rem;
   }
-  
+
   .stats-grid, .team-grid, .awards-grid {
     grid-template-columns: 1fr;
   }
