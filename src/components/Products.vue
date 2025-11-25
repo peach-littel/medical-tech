@@ -52,15 +52,13 @@
             </ul>
 
             <!-- 查看详情按钮 -->
-            <ul>
+            <div v-for="product in products" :key="product.id">
               <!-- 每个产品项通过动态路由跳转 -->
-              <li v-for="product in products" :key="product.id">
-                <!-- 使用路由参数 :id 传递产品 ID -->
-                <router-link :to="`/products/${product.id}`">
-                  {{ product.name }}
-                </router-link>
-              </li>
-            </ul>
+              <!-- 使用路由参数 :id 传递产品 ID -->
+              <router-link :to="`/products/${product.id}`">
+                {{ product.name }}
+              </router-link>
+            </div>
           </div>
         </div>
       </div>
