@@ -1,0 +1,27 @@
+/* 自托管 Noto Sans SC 字体 */
+@font-face {
+  font-family: 'Noto Sans SC';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('https://cdn.jsdelivr.net/fonts/noto/NotoSansSC-Regular.woff2') format('woff2'),
+       url('https://cdn.jsdelivr.net/fonts/noto/NotoSansSC-Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Noto Sans SC';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('https://cdn.jsdelivr.net/fonts/noto/NotoSansSC-Medium.woff2') format('woff2'),
+       url('https://cdn.jsdelivr.net/fonts/noto/NotoSansSC-Medium.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Noto Sans SC';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('https://cdn.jsdelivr.net/fonts/noto/NotoSansSC-Bold.woff2') format('woff2'),
+       url('https://cdn.jsdelivr.net/fonts/noto/NotoSansSC-Bold.woff') format('woff');
+}
